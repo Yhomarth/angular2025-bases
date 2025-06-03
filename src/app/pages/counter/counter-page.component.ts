@@ -1,19 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   templateUrl: './counter-page.component.html',
-  styles: `
-    button {
-      padding: 5px;
-      margin: 5px 10px;
-      width: 75px;
-    }
-  `
+  styleUrl: './counter-page.component.css'
 
 })
 export class CounterPageComponent{
 
   counter = 15;
+  counterSignal = signal(15);
 
   increaseBy(value:number){
 
@@ -22,12 +17,14 @@ export class CounterPageComponent{
     }
 
     this.counter += value;
+    this.counterSignal.update(currentValue => currentValue + value);
 
   }
 
 
   resetCounter(){
     this.counter = 0;
+    this.counterSignal.set(0);
   }
 
 }
