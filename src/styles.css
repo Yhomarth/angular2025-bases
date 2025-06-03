@@ -16,3 +16,8 @@ button .btnPrincipal {
       border-radius: 5px;
       cursor: pointer;
 }
+
+dd{
+  font-size: 20px;
+  font-weight: bold;;
+}
