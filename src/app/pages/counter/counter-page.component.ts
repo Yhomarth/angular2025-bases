@@ -23,8 +23,8 @@ export class CounterPageComponent{
 
 
   resetCounter(){
-    this.counter = 0;
-    this.counterSignal.set(0);
+    this.counter = 15;
+    this.counterSignal.set(15);
   }
 
 }
