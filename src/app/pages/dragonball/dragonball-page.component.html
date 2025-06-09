@@ -6,10 +6,26 @@
   <div class="col-12 col-sm-6">
     <h3>Agregar:</h3>
 
-    <input type="text" class="form-control" placeholder="Nombre del personaje" />
-    <input type="number" class="form-control mt-2" placeholder="Poder de pelea" />
+    <input type="text"
+           class="form-control"
+           placeholder="Nombre del personaje"
+           [value]="name()"
+           (change)="name.set(txtName.value)"
+           #txtName
+    />
 
-    <button class="btn btn-primary mt-2">Agregar Personaje</button>
+    <input type="number"
+           class="form-control mt-2"
+           placeholder="Poder de pelea"
+           [value]="power()"
+           (input)="power.set(+txtPower.value)"
+            #txtPower
+
+
+            />
+
+    <button class="btn btn-primary mt-2"
+            (click)="addCharacter()">Agregar Personaje</button>
   </div>
 
   <div class="col-12 col-sm-6">
