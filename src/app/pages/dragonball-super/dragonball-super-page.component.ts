@@ -1,14 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { CharacterListComponent } from "../../components/dragonball/character-list/character-list.component";
-import { AddCharacterComponent } from "../../components/dragonball/add-character/add-character.component";
+import { AddCharacterComponent } from "../../components/dragonball/character-add/add-character.component";
+import { Character } from '../../interfaes/dragonball.interfaces';
 
-interface Character {
 
-  id: number;
-  name: string;
-  power: number
-
-}
 
 @Component({
   selector: 'dragonballsuper',
@@ -21,6 +16,10 @@ export class DragonballSuperPageComponent {
     { id: 1, name: 'Goku', power: 12000 },
     { id: 2, name: 'Vegeta', power: 9000 },
   ]);
+
+  addCharacter(newCharacter: Character) {
+    this.characters.update((currentCharacters) => [...currentCharacters, newCharacter]);
+  }
 
 
 
