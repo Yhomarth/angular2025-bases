@@ -4,13 +4,16 @@ import { Character } from '../interfaes/dragonball.interfaces';
 
 
 
+const loadFromLocalStorage = () : Character[] => {
+  const characters = localStorage.getItem('characters');
+
+  return characters ? JSON.parse(characters): [];
+}
+
 @Injectable({ providedIn: 'root' })
 export class DragonballService {
 
-  characters = signal<Character[]>([
-    { id: 1, name: 'Goku', power: 12000 },
-    { id: 2, name: 'Vegeta', power: 9000 },
-  ]);
+  characters = signal<Character[]>( loadFromLocalStorage() );
 
   saveToLocalStorage = effect( ()=> {
 
