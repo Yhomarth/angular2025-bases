@@ -1,5 +1,5 @@
 
-import { Injectable, signal } from '@angular/core';
+import { effect, Injectable, signal } from '@angular/core';
 import { Character } from '../interfaes/dragonball.interfaces';
 
 
@@ -11,6 +11,13 @@ export class DragonballService {
     { id: 1, name: 'Goku', power: 12000 },
     { id: 2, name: 'Vegeta', power: 9000 },
   ]);
+
+  saveToLocalStorage = effect( ()=> {
+
+    const characters = this.characters();
+    localStorage.setItem('characters', JSON.stringify(characters));
+
+  });
 
   addCharacter(newCharacter: Character) {
     this.characters.update((currentCharacters) => [...currentCharacters, newCharacter]);
